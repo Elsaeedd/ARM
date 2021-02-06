@@ -35,12 +35,10 @@ void APP_voidSnakeEffect(void);
 
 int main(void)
 {
-	RCC_voidInit();
-	RCC_voidEnablePeripheralClock(RCC_APB2,RCC_GPIOA);
-
-	GPIO_voidSetPortDirection(PORTA, GPIO_OUTPUT_2MHZ_PP);
-
-	GPIO_voidSetPortValue(PORTA, 0x00);
+	RCC_voidInit();											/* Init  Clock System				*/
+	RCC_voidEnablePeripheralClock(RCC_APB2,RCC_GPIOA);		/*Enable PORTA Peripheral Clock		*/
+	GPIO_voidSetPortDirection(PORTA, GPIO_OUTPUT_2MHZ_PP);	/* Set PORTA Direction as output	*/
+	GPIO_voidSetPortValue(PORTA, 0x00);						/* Set PORTA Init output as 00000000*/				
 
 
     /* Loop forever */
