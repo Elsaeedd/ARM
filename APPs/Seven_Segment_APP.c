@@ -29,14 +29,14 @@
 #endif
 
 
-void Delayms(u16 Copy_u16WaitTme);	    /* Simbel Delay function				    */
-void DIS_voidFromXTo99(u8);				/* Display function from input number to 99 */
+void Delayms(u16 Copy_u16WaitTme);	/* Simbel Delay function		    */
+void DIS_voidFromXTo99(u8);		/* Display function from input number to 99 */
 
 
 int main(void)
 {
-	RCC_voidInit();											/* Init  Clock System*/
-	RCC_voidEnablePeripheralClock(RCC_APB2,RCC_GPIOA);		/*Enable PORTA Peripheral Clock*/
+	RCC_voidInit();						/* Init  Clock System		*/
+	RCC_voidEnablePeripheralClock(RCC_APB2,RCC_GPIOA);	/* Enable PORTA Peripheral Clock*/
 	GPIO_voidSetPortDirection(PORTA, GPIO_OUTPUT_2MHZ_PP);	/* Set PORTA Direction as output*/
 
     /* Loop forever */
