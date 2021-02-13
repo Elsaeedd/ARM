@@ -25,7 +25,7 @@ void GPIO_voidSetPinDirection(u8 Copy_u8PortID,u8 Copy_u8PinID,u8 Copy_u8Mode){
 				/* to deal with bit masking
 				 * 1 clear a specific bits
 				 * 2 assign a  specific bits*/
-				GPIOA_CRL &= ~((u32)(0b1111)<<(Copy_u8PinID * 4));
+				GPIOA_CRL &= ~((u32)(0b1111	  	)<<(Copy_u8PinID * 4));
 				GPIOA_CRL |=  ((u32)(Copy_u8Mode)<<(Copy_u8PinID * 4));
 			}
 			else {				/* High Port */
@@ -105,7 +105,7 @@ u8 GPIO_u8GetPinValue(u8 Copy_u8PortID,u8 Copy_u8PinID){
 	if(Copy_u8PortID < 3 && Copy_u8PinID <16 ){
 		switch(Copy_u8PortID){
 		case PORTA:	Local_u8Value = GET_BIT(GPIOA_IDR, Copy_u8PinID);	break;
-		case PORTB: 	Local_u8Value = GET_BIT(GPIOB_IDR, Copy_u8PinID);	break;
+		case PORTB: Local_u8Value = GET_BIT(GPIOB_IDR, Copy_u8PinID);	break;
 		case PORTC:	Local_u8Value = GET_BIT(GPIOC_IDR, Copy_u8PinID); 	break;
 		}
 	}
@@ -182,7 +182,7 @@ void GPIO_voidSetPortDirection(u8 Copy_u8PortID,u8 Copy_u8Mode){
 		}
 	}
 	else {
-			  /* return error */
+		/* return error */
 	}
 }
 #endif
@@ -195,10 +195,12 @@ void GPIO_voidSetPortValue(u8 Copy_u8PortID,u16 Copy_u16Value){
 		case PORTA:	GPIOA_ODR = (u32)Copy_u16Value;	break;
 		case PORTB:	GPIOB_ODR = (u32)Copy_u16Value;	break;
 		case PORTC:	GPIOC_ODR = (u32)Copy_u16Value;	break;
+
+		default			  : /* return error */;
 		}
 	}
 	else {
-			    /* return error */
+							/* return error */
 	}
 }
 #endif
@@ -212,7 +214,7 @@ void GPIO_voidSetPinValueFast(u8 Copy_u8PortID,u8 Copy_u8PinID,u8 Copy_u8Value){
 			switch(Copy_u8Value){
 			case HIGH:	 GPIOA_BSRR = (1<<Copy_u8PinID);	break;
 			case LOW :	 GPIOA_BRR  = (1<<Copy_u8PinID);	break;
-			default	 : /* return error */;
+			default: /* return error */;
 			}
 		break;
 
@@ -220,7 +222,7 @@ void GPIO_voidSetPinValueFast(u8 Copy_u8PortID,u8 Copy_u8PinID,u8 Copy_u8Value){
 			switch(Copy_u8Value){
 			case HIGH:	 GPIOB_BSRR = (1<<Copy_u8PinID);	break;
 			case LOW :	 GPIOB_BRR  = (1<<Copy_u8PinID);	break;
-			default  : /* return error */;
+			default: /* return error */;
 			}
 		break;
 
@@ -228,13 +230,14 @@ void GPIO_voidSetPinValueFast(u8 Copy_u8PortID,u8 Copy_u8PinID,u8 Copy_u8Value){
 			switch(Copy_u8Value){
 			case HIGH:	 GPIOC_BSRR = (1<<Copy_u8PinID);	break;
 			case LOW :	 GPIOC_BRR  = (1<<Copy_u8PinID);	break;
-			default  : /* return error */;
+			default: /* return error */;
 		}
 		break;
+		default: 	/* return error*/;
 		}
 	}
 	else {
-				  /* return error */
+					/* return error */
 		}
 }
 #endif
