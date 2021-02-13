@@ -8,7 +8,6 @@
 
 void LCD_voidInit(void)
 {
-	STK_voidSetBusyWait(Copy_u32Ticks);
 	GPIO_voidSetPortValue(PORTA, 0);
 	GPIO_voidSetPinValue(PORTA, E, LOW);
 	LCD_voidWRCMD(0X33);
